@@ -1,0 +1,64 @@
+Q1:
+SELECT COUNT(*) 
+FROM rental 
+WHERE return_date is NULL;
+
+183
+
+Q2:
+SELECT rental.customer_id, customer_list.name,count(*)
+FROM rental
+JOIN customer_list ON rental.customer_id=customer_list.id
+WHERE rental.return_date is NULL
+GROUP BY rental.customer_id,customer_list.name
+ORDER BY customer_id;
+
+5	Elizabeth Brown	        1
+9	Margaret Moore	        1
+11	Lisa Anderson	        1
+14	Betty White	        1
+15	Helen Harris	        2
+21	Michelle Clark	        1
+22	Laura Rodriguez	        1
+23	Sarah Lewis	        1
+28	Cynthia Young	        1
+29	Angela Hernandez	1
+33	Anna Hill	        1
+41	Stephanie Mitchell	1
+42	Carolyn Perez	        2
+43	Christine Roberts	2
+
+
+Q3:
+SELECT EXTRACT(HOUR FROM rental_date) as Hour, 
+    COUNT(EXTRACT(HOUR FROM rental_date))
+FROM rental
+GROUP BY Hour
+ORDER BY COUNT DESC;
+
+
+Q4:
+SELECT name, SUM(DATE(return_date) - DATE(rental_date) - 7) AS Late_fee
+FROM rental
+INNER JOIN customer_list ON id = customer_id
+WHERE DATE(return_date) - DATE(rental_date) - 7 > 0
+GROUP BY name
+ORDER BY Late_fee DESC
+
+Results:
+Name	                   Late_fee
+Karl Seal	              24
+Rhonda Kennedy	              23
+June Carroll	              22
+Eleanor Hunt	              22
+Louis Leone	              22
+Lena Jensen	              21
+Michelle Clark	              21
+Brittany Riley	              19
+Wesley Bull	              19
+Neil Renner	              19
+Tim Cary	              18
+Alexander Fennell	      18
+Marion Snyder	              18
+Diane Collins	              17
+Calvin Martel	              17
