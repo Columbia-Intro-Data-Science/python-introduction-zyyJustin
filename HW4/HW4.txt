@@ -1,11 +1,15 @@
-Q1:
+Q1:Give a count of all videos currently out.
+
 SELECT COUNT(*) 
 FROM rental 
 WHERE return_date is NULL;
 
+Results:
 183
 
-Q2:
+
+Q2:Make a list of all customer names who have videos out and how much they owe.
+
 SELECT rental.customer_id, customer_list.name,count(*)
 FROM rental
 JOIN customer_list ON rental.customer_id=customer_list.id
@@ -13,31 +17,28 @@ WHERE rental.return_date is NULL
 GROUP BY rental.customer_id,customer_list.name
 ORDER BY customer_id;
 
-5	Elizabeth Brown	        1
-9	Margaret Moore	        1
-11	Lisa Anderson	        1
-14	Betty White	        1
-15	Helen Harris	        2
-21	Michelle Clark	        1
-22	Laura Rodriguez	        1
-23	Sarah Lewis	        1
-28	Cynthia Young	        1
-29	Angela Hernandez	1
-33	Anna Hill	        1
-41	Stephanie Mitchell	1
-42	Carolyn Perez	        2
-43	Christine Roberts	2
+Results:
+Customer_id      Name                     Count
+5	         Elizabeth Brown	  1
+9	         Margaret Moore	          1
+11	         Lisa Anderson	          1
+14	         Betty White	          1
+15	         Helen Harris	          2
+21	         Michelle Clark	          1
+22	         Laura Rodriguez	  1
+23	         Sarah Lewis	          1
+28	         Cynthia Young	          1
+29	         Angela Hernandez	  1
+33	         Anna Hill	          1
+41	         Stephanie Mitchell	  1
+42	         Carolyn Perez	          2
+43	         Christine Roberts	  2
+
+The full results are uploaded as a csv file.
 
 
-Q3:
-SELECT EXTRACT(HOUR FROM rental_date) as Hour, 
-    COUNT(EXTRACT(HOUR FROM rental_date))
-FROM rental
-GROUP BY Hour
-ORDER BY COUNT DESC;
+Q3:Using a $1 per day late fee. Find out which users owe the most assuming all rentals are a week long.
 
-
-Q4:
 SELECT name, SUM(DATE(return_date) - DATE(rental_date) - 7) AS Late_fee
 FROM rental
 INNER JOIN customer_list ON id = customer_id
@@ -62,3 +63,41 @@ Alexander Fennell	      18
 Marion Snyder	              18
 Diane Collins	              17
 Calvin Martel	              17
+
+The full results are uploaded as a csv file.
+
+
+Q4:What hour of the day to people rent the most?
+
+SELECT EXTRACT(HOUR FROM rental_date) as Hour, 
+    COUNT(EXTRACT(HOUR FROM rental_date))
+FROM rental
+GROUP BY Hour
+ORDER BY COUNT DESC;
+
+Results:
+Hour	Count
+15.00	887
+8.00	696
+0.00	694
+18.00	688
+3.00	684
+4.00	681
+19.00	676
+10.00	673
+21.00	671
+7.00	667
+16.00	664
+11.00	663
+20.00	658
+14.00	653
+9.00	652
+1.00	649
+5.00	648
+6.00	647
+13.00	645
+23.00	642
+17.00	634
+12.00	632
+2.00	630
+22.00	610
