@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+  
+</body>
+</html>
+
+<select name="cap-shape">
+  <option style="display:none">
+  <option value="b">Bell</option>
+  <option value="c">Conical</option>
+  <option value="x">Convex</option>
+  <option value="f">Flat</option>
+  <option value="k">Knobbed</option>
+  <option value="s">Sunken</option>
+</select>
+
+<select name="cap-surface">
+  <option style="display:none">
+  <option value="f">Fibrous</option>
+  <option value="g">Grooves</option>
+  <option value="y">Scaly</option>
+  <option value="s">Smooth</option>
+</select>
+
+<select name="cap-color">
+  <option style="display:none">
+  <option value="n">Brown</option>
+  <option value="b">Buff</option>
+  <option value="c">Cinnamon</option>
+  <option value="g">Gray</option>
+  <option value="r">Green</option>
+  <option value="p">Pink</option>
+  <option value="u">Purple</option>
+  <option value="e">Red</option>
+  <option value="w">White</option>
+  <option value="y">Yellow</option>
+</select>
+
+<select name="bruises">
+  <option style="display:none">
+  <option value="t">Yes</option>
+  <option value="f">No</option>
+ </select>
+
+ <select name="odor">
+  <option style="display:none">
+  <option value="a">Almond</option>
+  <option value="l">Anise</option>
+  <option value="c">Creosote</option>
+  <option value="y">Fishy</option>
+  <option value="f">Foul</option>
+  <option value="m">Musty</option>
+  <option value="p">Pungent</option>
+  <option value="s">Spicy</option>
+  <option value="n">None</option>
+</select>
